@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<body>
+  <div class="main">
+    <p class="sign" align="center">Sign Up</p>
+    <form class="form1">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "Username",class: "un " %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email",class: "un " %>    
+      <div class="pass"><% if @minimum_password_length %>
+        <em>(Password minimum <%= @minimum_password_length %> characters)</em>
+        <% end %></div>
+      <%= f.password_field :password, autocomplete: "new-password",placeholder: "New Password",class: "pass" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "Confim Password",class: "pass" %>      
+       <%= f.submit "Sign Up", class: "submit" %><br><br>
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "Log in", new_session_path(resource_name), class: "submit" %><br />
+      <% end %>            
+    </div>    
+</body>
+<% end %>
+
+
+<style type="text/css">
+  .pass{
+    align:center;
+  }
+</style>

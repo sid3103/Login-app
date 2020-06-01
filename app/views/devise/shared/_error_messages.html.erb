@@ -1,0 +1,42 @@
+<div class="container">
+<div class="alert alert-warning alert-dismissible">
+<% if resource.errors.any? %>
+  <div id="error_explanation">    
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase)
+       %>
+    </h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>      
+        <%= message %>
+      <% end %>              
+    </ul>
+  </div>
+<% end %>
+ </div>
+  </div>
+
+<style type="text/css">
+   #error_explanation{
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
